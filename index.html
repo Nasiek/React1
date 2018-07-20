@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> simple-js</title>
+</head>
+<body>
+
+	<style type="text/css">
+		.board {
+			display:flex;
+			width: 600px;
+			height: 600px;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+		.square {
+			height: 200px;
+			width: 200px;
+			box-sizing: border-box;
+			border: 5px solid black;
+			font-size: 5em;
+			display: flex;
+			justify-content: center;
+		}
+		.square:hover {
+			cursor: pointer;
+			background-color: #58D68D;
+		}
+
+	</style>
+<h1>Hello Drexel</h1>
+<div class="board">
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+
+</div>
+
+<script type="text/javascript">
+var PLAYER_ONE_SYMBOL = 'X';
+var PLAYER_TWO_SYMBOL = '0';	
+var currentTurn = PLAYER_ONE_SYMBOL;
+
+var board = document.querySelector('.board')
+document.addEventListener('click', function(e) {e.target.innerHTML = currentTurn
+	  currentTurn = currentTurn === PLAYER_ONE_SYMBOL ? PLAYER_TWO_SYMBOL
+});
+
+</script>
+
+</body>
+</html>

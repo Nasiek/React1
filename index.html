@@ -13,6 +13,7 @@
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: flex-start;
+			padding: 20px;
 		}
 		.square {
 			height: 200px;
@@ -44,34 +45,73 @@
 
 </div>
 
+<div class='board'>
+	</div>
 <script type="text/javascript">
-var PLAYER_ONE_SYMBOL = 'X';
-var PLAYER_TWO_SYMBOL = '0';	
-var currentTurn = PLAYER_ONE_SYMBOL;
-
-var board = document.querySelector('.board');
-board.addEventListener('click', function(e) {
-	e.target.innerHTML = currentTurn;
-	currentTurn = currentTurn === PLAYER_ONE_SYMBOL ? PLAYER_TWO_SYMBOL : PLAYER_ONE_SYMBOL;
-	if(checkForWinner()) {
-		alert("SOMEBODY WON!");
+	var gameState = {
+		PLAYER_ONE_SYMBOL: "X",
+		PLAYER_TWO_SYMBOL: "O",
+		currentTurn: "X",
+		board: [
+		"","","","","","","","",""]
 	};
-});
 
-function checkForWinner() {
-	var squares = Array.prototype.slice.call(document.querySelectorAll('.square'),0)
-	var symbols = squares.map(function(square){
-		return square.innerHTML;
-	})
-	var winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-	return winningCombos.find(function(combo){
-		if(symbols[combo[0]] == symbols[combo[1]] && symbols[combo[1]] == symbols[[2]]) {
-			return symbols[combo[0]]
-		} else {
-		return false
-	}
-	})
+var render = function(state){
+	return "<div class='board'>" + 
+	"<div class='square'>" + state.board[0] + "</div>" + 
+	"<div class='square'>" + state.board[1] + "</div>" + 
+	"<div class='square'>" + state.board[2] + "</div>" + 
+	"<div class='square'>" + state.board[3] + "</div>" + 
+	"<div class='square'>" + state.board[4] + "</div>" + 
+	"<div class='square'>" + state.board[5] + "</div>" + 
+	"<div class='square'>" + state.board[6] + "</div>" + 
+	"<div class='square'>" + state.board[7] + "</div>" + 
+	"<div class='square'>" + state.board[8] + "</div>" +
+	"</div>"
 };
+
+	///// `<div class='square'>${state.board[1]}
+	// </div>`
+	// `<div class='square'>${state.board[2]}
+	// </div>`
+	// `<div class='square'>${state.board[3]}
+	// </div>`
+	// `<div class='square'>${state.board[4]}
+	// </div>`
+	// `<div class='square'>${state.board[5]}
+	// </div>`
+	// `<div class='square'>${state.board[6]}
+	// </div>`
+	// `<div class='square'>${state.board[7]}
+	// </div>`
+	// `<div class='square'>${state.board[8]}
+	// </div>`
+	// `</div>`
+
+console.log(render(gameState))
+// var board = document.querySelector('.board');
+// board.addEventListener('click', function(e) {
+// 	e.target.innerHTML = currentTurn;
+// 	currentTurn = currentTurn === PLAYER_ONE_SYMBOL ? PLAYER_TWO_SYMBOL : PLAYER_ONE_SYMBOL;
+// 	if(checkForWinner()) {
+// 		alert("SOMEBODY WON!");
+// 	};
+// });
+
+// function checkForWinner() {
+// 	var squares = Array.prototype.slice.call(document.querySelectorAll('.square'),0)
+// 	var symbols = squares.map(function(square){
+// 		return square.innerHTML;
+// 	})
+// 	var winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+// 	return winningCombos.find(function(combo){
+// 		if(symbols[combo[0]] == symbols[combo[1]] && symbols[combo[1]] == symbols[[2]]) {
+// 			return symbols[combo[0]]
+// 		} else {
+// 		return false
+// 	}
+// 	})
+// };
 
 </script>
 

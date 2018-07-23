@@ -6,27 +6,39 @@ class App extends Component {
   
   constructor(props){
   super(props)
-  
+  this.state = {
+    PLAYER_ONE_SYMBOL: 'X',
+    PLAYER_TWO_SYMBOL: 'O',
+    currentTurn: 'X',
+    board: [
+    "","","","","","","","",""
+    ]
+  }  
 }
 
-componentWillMount(){
-  this.setState({
-    message: "Sup Earth"
-  })
-}
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title" onClick={() => this.setState({message: this.state.message + '!'})}>{this.state.message}</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+  handleClick(index) {
+    if(this.state.board[index] === ""){
+
+
+    this.state.board[index]= this.state.currentTurn
+    this.setState({
+      board: this.state.board,
+      currentTurn: this.state.currentTurn === this.state.PLAYER_ONE_SYMBOL ? this.state.PLAYER_TWO_SYMBOL : this.state.PLAYER_ONE_SYMBOL,
+    })
+    console.log(index);
   }
 }
+
+  render() {
+    return (
+      <div className="board">
+      {this.state.board.map((cell, index) => {
+        return <div onClick={() => this.handleClick(index)}  className="square">{cell}</div>;
+      })
+    }
+      </div> 
+      )
+  }
+  }
 
 export default App;
